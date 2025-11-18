@@ -77,6 +77,7 @@ class MessageFormatter:
         total_stats: Dict[str, Any],
         last_24h_stats: Dict[str, Any],
         breakdown: Dict[str, Dict[str, int]],
+        hashtag: str,
         top_posts: Optional[List[Dict[str, Any]]] = None,
         sheet_url: Optional[str] = None,
         unique_authors: Optional[Dict[str, int]] = None
@@ -88,6 +89,7 @@ class MessageFormatter:
             total_stats: Общая статистика
             last_24h_stats: Статистика за 24 часа
             breakdown: Разбивка по типам
+            hashtag: Хештег для мониторинга
             top_posts: ТОП-3 самых популярных постов (опционально)
             sheet_url: Ссылка на Google Sheets (опционально)
             unique_authors: Количество уникальных авторов (опционально)
@@ -96,7 +98,7 @@ class MessageFormatter:
             str: Отформатированное сообщение в Markdown
 
         Example:
-            >>> message = formatter.format_report_message(stats, h24, breakdown, top_posts)
+            >>> message = formatter.format_report_message(stats, h24, breakdown, '#Снежинск', top_posts)
             >>> print(len(message))
             1024
         """
@@ -104,7 +106,7 @@ class MessageFormatter:
         current_date = datetime.now().strftime('%d.%m.%Y')
 
         lines = [
-            "📊 *ОТЧЁТ ПО МОНИТОРИНГУ #Снежинск*",
+            f"📊 *ОТЧЁТ ПО МОНИТОРИНГУ {hashtag}*",
             f"📅 {current_date}",
             ""
         ]

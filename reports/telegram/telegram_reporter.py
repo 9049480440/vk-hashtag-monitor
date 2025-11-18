@@ -44,6 +44,7 @@ class TelegramReporter(BaseReporter):
         """
         super().__init__(database, logger)
 
+        self.config = config
         self.sheet_url = sheet_url
 
         # Инициализация компонентов
@@ -104,6 +105,7 @@ class TelegramReporter(BaseReporter):
                 total_stats=total_stats,
                 last_24h_stats=last_24h_stats,
                 breakdown=breakdown,
+                hashtag=self.config.HASHTAG,
                 top_posts=top_posts,
                 sheet_url=self.sheet_url,
                 unique_authors=unique_authors

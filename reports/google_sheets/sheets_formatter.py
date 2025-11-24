@@ -174,7 +174,7 @@ class SheetsFormatter:
                 post.get('owner_name', 'Неизвестно'),
                 'Группа' if post.get('source_type') == 'group' else 'Пользователь',
                 post.get('post_url', ''),
-                self.truncate_text(post.get('text', ''), 100),
+                post.get('text', ''),
                 post.get('post_views', 0),
                 post.get('video_views', 0) if post.get('has_video') else 0,
                 post.get('likes', 0),
